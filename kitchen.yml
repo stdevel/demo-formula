@@ -18,6 +18,10 @@ provisioner:
     - .git
     - .vagrant
 
+transport:
+  name: ssh
+  max_ssh_sessions: 5
+
 verifier:
   name: inspec
   sudo: true

@@ -9,6 +9,7 @@ driver:
 
 provisioner:
   name: salt_solo
+  salt_install: none
   is_file_root: true
   require_chef: false
   # salt_install: distrib

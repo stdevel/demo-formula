@@ -9,7 +9,7 @@ name: CI
 
 jobs:
   lint:
-    name: Lint
+    name: lint
     runs-on: ubuntu-latest
     steps:
       - name: Check-out code
@@ -29,3 +29,23 @@ jobs:
         run: |
           salt-lint demo
           rubocop test/*.rb
+
+  kitchen:
+    name: test-kitchen
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check-out code
+        uses: actions/checkout@v2
+
+      - name: Set-up Python 3
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          sudo apt install test-kitchen ruby-kitchen-salt ruby-kitchen-docker
+
+      - name: Run test-kitchen tests
+        run: |
+          kitchen test

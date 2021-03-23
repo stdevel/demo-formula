@@ -49,4 +49,4 @@ jobs:
 
       - name: Run test-kitchen tests
         run: |
-          kitchen test
+          kitchen -l debug test

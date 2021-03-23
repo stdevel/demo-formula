@@ -21,6 +21,7 @@ provisioner:
 transport:
   name: ssh
   max_ssh_sessions: 5
+  connection_retries: 60
 
 verifier:
   name: inspec

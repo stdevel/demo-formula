@@ -12,7 +12,6 @@ provisioner:
   salt_install: none
   is_file_root: true
   require_chef: false
-  # salt_install: distrib
   salt_copy_filter:
     - .kitchen
     - .git
@@ -20,7 +19,7 @@ provisioner:
 
 transport:
   name: ssh
-  max_ssh_sessions: 5
+  max_ssh_sessions: 1
   connection_retries: 60
 
 verifier:

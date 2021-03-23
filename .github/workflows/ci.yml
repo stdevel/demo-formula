@@ -45,7 +45,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt install test-kitchen ruby-kitchen-salt ruby-kitchen-docker
-          sudo gem install inspec
+          sudo gem install inspec kitchen-inspec
 
       - name: Run test-kitchen tests
         run: |

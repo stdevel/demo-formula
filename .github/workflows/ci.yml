@@ -23,7 +23,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip3 install salt-lint
-          apt install rubocop
+          sudo apt install rubocop
 
       - name: Lint code
         run: |

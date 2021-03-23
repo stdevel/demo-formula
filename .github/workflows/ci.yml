@@ -49,5 +49,6 @@ jobs:
 
       - name: Run test-kitchen tests
         run: |
-          kitchen test
-          kitchen test
+          kitchen converge
+          kitchen converge
+          kitchen verify

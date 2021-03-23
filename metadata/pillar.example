@@ -1,0 +1,6 @@
+# This file is part of demo-formula
+#
+
+motd:
+  cow_type: "-s"
+  text: "SUSECON 21"

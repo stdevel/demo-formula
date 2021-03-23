@@ -1,0 +1,21 @@
+# This file is part of demo-formula
+#
+
+motd:
+  $type: group
+
+  cow_type:
+    $name: 'Cow type'
+    $type: select
+    $values: [
+              '-b',
+              '-d',
+              '-s',
+              '-t'
+              ]
+    $default: '-s'
+
+  text:
+    $name: 'Text the cow should say'
+    $type: text
+    $default: 'SUSECON 21'

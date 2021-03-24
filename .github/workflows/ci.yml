@@ -67,6 +67,7 @@ jobs:
         run: |
           cd ..
           mv salt-tdd-example demo-formula-1.0
+          mkdir -p /usr/src/packages/SOURCES
           tar cvfz /usr/src/packages/SOURCES/demo-formula-1.0.tar.gz demo-formula-1.0
           cd demo-formula-1.0
           mkdir dist

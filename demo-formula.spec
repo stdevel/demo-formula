@@ -9,7 +9,7 @@ Name:           demo-formula
 Version:        1.0
 Release:        1%{?dist}
 Summary:        Demo Formula for SUSE Manager
-Url:            https://github.com/stdevel/salt-tdd-example
+Url:            https://github.com/stdevel/demo-formula
 Requires:       salt-master
 License:        GPL-3.0
 Group:          System/Management

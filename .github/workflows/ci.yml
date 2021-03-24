@@ -54,14 +54,14 @@ jobs:
 
   rpm:
     name: create-rpm
-    runs-on: opensuse-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Check-out code
         uses: actions/checkout@v2
 
       - name: Install dependencies
         run: |
-          sudo zypper --non-interactive in tar gzip rpmdevtools rpm-build
+          sudo apt-get install -y tar gzip rpm
 
       - name: Build RPM
         run: |

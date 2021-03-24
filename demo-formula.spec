@@ -1,5 +1,5 @@
 #
-# spec file for package sap-compliance-formula
+# spec file for package demo-formula
 #
 #
 
@@ -18,7 +18,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 # This would be better with a macro that just strips "-formula" from {name}
-%define fname demo
+# %define fname demo
 
 %description
 Salt Formula for SUSE Manager. Configures demo content.

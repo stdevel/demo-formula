@@ -59,22 +59,14 @@ jobs:
       - name: Check-out code
         uses: actions/checkout@v2
 
-      - name: Install dependencies
-        run: |
-          sudo apt-get install -y tar gzip rpm
-
-      - name: Build RPM
-        run: |
-          cd ..
-          mv salt-tdd-example demo-formula-1.0
-          sudo tar cvfz /home/runner/rpmbuild/SOURCES/demo-formula-1.0.tar.gz demo-formula-1.0
-          cd demo-formula-1.0
-          mkdir dist
-          rpmbuild -ba demo-formula.spec
-          ls -laR /usr/src/packages
-          mv /usr/src/packages/RPMS/noarch/*.rpm /usr/src/packages/SRPMS/*.rpm dist/
-
-      - uses: actions/upload-artifact@v2
+      - name: build RPM package
+        id: rpm
+        uses: naveenrajm7/rpmbuild@master
         with:
-          name: rpm-artifact
-          path: dist/
+          spec_file: "demo-formula.spec"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1.0.0
+        with:
+          name: Binary RPM
+          path: ${{ steps.rpm.outputs.rpm_dir_path }}

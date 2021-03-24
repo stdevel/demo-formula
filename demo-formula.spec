@@ -9,12 +9,12 @@ Name:           demo-formula
 Version:        1.0
 Release:        1%{?dist}
 Summary:        Demo Formula for SUSE Manager
-Url:            https://github.com/stdevel/demo-formula
+URL:            https://github.com/stdevel/%{name}
+BuildRoot:      https://github.com/stdevel/%{name}/%{name}-%{version}.tar.gz
 Requires:       salt-master
 License:        GPL-3.0
 Group:          System/Management
 Source0:        %{name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 # This would be better with a macro that just strips "-formula" from {name}

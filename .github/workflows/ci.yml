@@ -6,6 +6,7 @@ name: CI
     branches:
       - master
       - main
+      - feat-rpm
 
 jobs:
   lint:

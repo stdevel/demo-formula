@@ -51,3 +51,30 @@ jobs:
       - name: Run test-kitchen tests
         run: |
           kitchen test
+
+  rpm:
+    name: create-rpm
+    runs-on: opensuse-leap
+    steps:
+      - name: Check-out code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |
+          sudo zypper --non-interactive in tar gzip rpmdevtools rpm-build
+
+      - name: Build RPM
+        run: |
+          cd ..
+          mv salt-tdd-example demo-formula-1.0
+          tar cvfz /usr/src/packages/SOURCES/demo-formula-1.0.tar.gz demo-formula-1.0
+          cd demo-formula-1.0
+          mkdir dist
+          rpmbuild -ba demo-formula.spec
+          ls -laR /usr/src/packages
+          mv /usr/src/packages/RPMS/noarch/*.rpm /usr/src/packages/SRPMS/*.rpm dist/
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: rpm-artifact
+          path: dist/

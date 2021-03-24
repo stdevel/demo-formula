@@ -9,48 +9,48 @@ name: CI
       - feat-rpm
 
 jobs:
-  lint:
-    name: lint
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check-out code
-        uses: actions/checkout@v2
+  #lint:
+  #  name: lint
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #    - name: Check-out code
+  #      uses: actions/checkout@v2
 
-      - name: Set-up Python 3
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
+  #    - name: Set-up Python 3
+  #      uses: actions/setup-python@v2
+  #      with:
+  #        python-version: '3.x'
 
-      - name: Install dependencies
-        run: |
-          pip3 install salt-lint
-          sudo apt install rubocop
+  #    - name: Install dependencies
+  #      run: |
+  #        pip3 install salt-lint
+  #        sudo apt install rubocop
 
-      - name: Lint code
-        run: |
-          salt-lint demo
-          rubocop test/*.rb
+  #    - name: Lint code
+  #      run: |
+  #        salt-lint demo
+  #        rubocop test/*.rb
 
-  kitchen:
-    name: test-kitchen
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check-out code
-        uses: actions/checkout@v2
+  #kitchen:
+  #  name: test-kitchen
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #    - name: Check-out code
+  #      uses: actions/checkout@v2
 
-      - name: Set-up Python 3
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
+  #    - name: Set-up Python 3
+  #      uses: actions/setup-python@v2
+  #      with:
+  #        python-version: '3.x'
 
-      - name: Install dependencies
-        run: |
-          sudo apt install test-kitchen ruby-kitchen-salt ruby-kitchen-docker openssh-client
-          sudo gem install inspec kitchen-inspec
+  #    - name: Install dependencies
+  #      run: |
+  #        sudo apt install test-kitchen ruby-kitchen-salt ruby-kitchen-docker openssh-client
+  #        sudo gem install inspec kitchen-inspec
 
-      - name: Run test-kitchen tests
-        run: |
-          kitchen test
+  #    - name: Run test-kitchen tests
+  #      run: |
+  #        kitchen test
 
   rpm:
     name: create-rpm

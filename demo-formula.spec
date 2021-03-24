@@ -1,20 +1,14 @@
-#
-# spec file for package demo-formula
-#
-#
-
-# See also http://en.opensuse.org/openSUSE:Specfile_guidelines
-
 Name:           demo-formula
 Version:        1.0
 Release:        1%{?dist}
 Summary:        Demo Formula for SUSE Manager
-URL:            https://github.com/stdevel/%{name}
-BuildRoot:      https://github.com/stdevel/%{name}/%{name}-%{version}.tar.gz
-Requires:       salt-master
+
 License:        GPL-3.0
+URL:            https://github.com/stdevel/%{name}
+Source0:      https://github.com/stdevel/%{name}/%{name}-%{version}.tar.gz
+
+Requires:       salt-master
 Group:          System/Management
-Source0:        %{name}-%{version}.tar.gz
 BuildArch:      noarch
 
 # This would be better with a macro that just strips "-formula" from {name}

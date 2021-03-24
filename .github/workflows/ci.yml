@@ -67,8 +67,7 @@ jobs:
         run: |
           cd ..
           mv salt-tdd-example demo-formula-1.0
-          sudo mkdir -p /usr/src/packages/SOURCES
-          sudo tar cvfz /usr/src/packages/SOURCES/demo-formula-1.0.tar.gz demo-formula-1.0
+          tar cvfz /home/runner/rpmbuild/SOURCES/demo-formula-1.0.tar.gz demo-formula-1.0
           cd demo-formula-1.0
           mkdir dist
           rpmbuild -ba demo-formula.spec

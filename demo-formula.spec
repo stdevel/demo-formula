@@ -1,24 +1,18 @@
-#
-# spec file for package sap-compliance-formula
-#
-#
-
-# See also http://en.opensuse.org/openSUSE:Specfile_guidelines
-
 Name:           demo-formula
 Version:        1.0
 Release:        1%{?dist}
 Summary:        Demo Formula for SUSE Manager
-Url:            https://github.com/stdevel/salt-tdd-example
-Requires:       salt-master
+
 License:        GPL-3.0
+URL:            https://github.com/stdevel/%{name}
+Source0:      https://github.com/stdevel/%{name}/%{name}-%{version}.tar.gz
+
+Requires:       salt-master
 Group:          System/Management
-Source0:        %{name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 # This would be better with a macro that just strips "-formula" from {name}
-%define fname demo
+# %define fname demo
 
 %description
 Salt Formula for SUSE Manager. Configures demo content.

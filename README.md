@@ -1,2 +1,3 @@
-# salt-tdd-example
-Test-driven development example using Salt 
+# demo-formula
+
+Test-driven development example using Salt

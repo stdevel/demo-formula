@@ -6,47 +6,67 @@ name: CI
     branches:
       - master
       - main
+      - feat-rpm
 
 jobs:
-  lint:
-    name: lint
+  #lint:
+  #  name: lint
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #    - name: Check-out code
+  #      uses: actions/checkout@v2
+
+  #    - name: Set-up Python 3
+  #      uses: actions/setup-python@v2
+  #      with:
+  #        python-version: '3.x'
+
+  #    - name: Install dependencies
+  #      run: |
+  #        pip3 install salt-lint
+  #        sudo apt install rubocop
+
+  #    - name: Lint code
+  #      run: |
+  #        salt-lint demo
+  #        rubocop test/*.rb
+
+  #kitchen:
+  #  name: test-kitchen
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #    - name: Check-out code
+  #      uses: actions/checkout@v2
+
+  #    - name: Set-up Python 3
+  #      uses: actions/setup-python@v2
+  #      with:
+  #        python-version: '3.x'
+
+  #    - name: Install dependencies
+  #      run: |
+  #        sudo apt install test-kitchen ruby-kitchen-salt ruby-kitchen-docker openssh-client
+  #        sudo gem install inspec kitchen-inspec
+
+  #    - name: Run test-kitchen tests
+  #      run: |
+  #        kitchen test
+
+  rpm:
+    name: create-rpm
     runs-on: ubuntu-latest
     steps:
       - name: Check-out code
         uses: actions/checkout@v2
 
-      - name: Set-up Python 3
-        uses: actions/setup-python@v2
+      - name: build RPM package
+        id: rpm
+        uses: naveenrajm7/rpmbuild@master
         with:
-          python-version: '3.x'
+          spec_file: "cello.spec"
 
-      - name: Install dependencies
-        run: |
-          pip3 install salt-lint
-          sudo apt install rubocop
-
-      - name: Lint code
-        run: |
-          salt-lint demo
-          rubocop test/*.rb
-
-  kitchen:
-    name: test-kitchen
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check-out code
-        uses: actions/checkout@v2
-
-      - name: Set-up Python 3
-        uses: actions/setup-python@v2
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1.0.0
         with:
-          python-version: '3.x'
-
-      - name: Install dependencies
-        run: |
-          sudo apt install test-kitchen ruby-kitchen-salt ruby-kitchen-docker openssh-client
-          sudo gem install inspec kitchen-inspec
-
-      - name: Run test-kitchen tests
-        run: |
-          kitchen test
+          name: Binary RPM
+          path: ${{ steps.rpm.outputs.rpm_dir_path }}

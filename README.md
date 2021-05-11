@@ -4,7 +4,10 @@ Simple Salt formula for demonstrating test-driven development for SUSE Manager
 
 ## Usage
 
-This formula... TODO
+This formula simply sets the content of `/etc/motd` to the output of a particular `cowsay` output. It supports changing the text and cow type via **Pillar**:
+
+- `motd.cow_type` - cow type, see man page (*default: `-s`*)
+- `motd.text` - message (*default: 'SUSECON 21'*)
 
 ## Testing via `kitchen`
 

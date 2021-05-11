@@ -1,3 +1,3 @@
 description:
-  Demo settings
-group: security_configuration
+  MOTD settings
+group: general_system_configuration
